@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width">
+ <title>Servicio</title>
+</head>
+<body>
+ <h1>Obtener Nombre</h1>
+ <button onclick="obtenerNombre()">
+ 
+    Obtener Nombre
+ </button>
+
+
+
+
+ <script>
+  async function obtenerNombre() {
+   try {
+
+    const resp = await fetch("getName.php");
+    if (resp.ok) {
+     const data = await resp.json();
+     alert(`Nombre recibido: ${data.name}`);
+    } else {
+     throw new Error(resp.statusText);
+    }
+   } catch (error) {
+    console.error(error);
+    alert(`Error: ${error.message}`);
+   }
+  }
+ </script>
+</body>
+</html>
